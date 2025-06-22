@@ -1,8 +1,6 @@
 package org.yearup.data.mysql;
 
-import org.springframework.boot.autoconfigure.amqp.RabbitProperties;
 import org.springframework.stereotype.Component;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.yearup.data.CategoryDao;
 import org.yearup.models.Category;
 
@@ -10,8 +8,6 @@ import javax.sql.DataSource;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
-
-import static org.yearup.data.mysql.MySqlProductDao.mapRow;
 
 @Component
 public class MySqlCategoryDao extends MySqlDaoBase implements CategoryDao {
@@ -64,8 +60,30 @@ public class MySqlCategoryDao extends MySqlDaoBase implements CategoryDao {
 
     @Override
     public Category create(Category category)
-    {
-        // create a new category
+    {// create a new category
+       String query = "INSERT INTO categories (name, description) VALUES(?,?)";
+       try(
+               Connection cn = getConnection();
+               PreparedStatement ps = cn.prepareStatement(query, Statement.RETURN_GENERATED_KEYS)
+               )
+       {
+           ps.setString(1, category.getName());
+           ps.setString(2, category.getDescription());
+
+           int rowsAffected = ps.executeUpdate();
+
+           if (rowsAffected > 0) {
+               ResultSet keys = ps.getGeneratedKeys();
+               if (keys.next()) {
+                   int newID = keys.getInt(1);
+                   category.setCategoryId(newID);
+               }
+           }
+           return category;
+       }
+       catch (SQLException e){
+           System.out.println("ERROR ALERT: " + e.getMessage());
+       }
         return null;
     }
 
