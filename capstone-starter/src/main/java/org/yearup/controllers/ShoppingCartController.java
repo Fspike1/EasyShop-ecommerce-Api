@@ -2,6 +2,7 @@ package org.yearup.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
@@ -69,11 +70,15 @@ public class ShoppingCartController {
         //get the cart
         ShoppingCart cart = shoppingCartDao.getByUserId(userId);
         // create item and add to cart
-        ShoppingCartItem item = new ShoppingCartItem();
-        item.setProduct(product);
-        item.setQuantity(1);
-
-        cart.add(item);//Adding item to users cart
+        ShoppingCartItem existingItem = cart.get(productId);
+        if (existingItem != null) {
+            existingItem.setQuantity(existingItem.getQuantity() + 1);
+        } else {
+            ShoppingCartItem item = new ShoppingCartItem();
+            item.setProduct(product);
+            item.setQuantity(1);
+            cart.add(item);
+        }
         return "Quantity updated";
     }
 
@@ -82,7 +87,7 @@ public class ShoppingCartController {
     // https://localhost:8080/cart/products/15 (15 is the productId to be updated)
     // the BODY should be a ShoppingCartItem - quantity is the only value that will be updated
     @PutMapping("/products/{productId}")
-    public String updateQuantity(@PathVariable int productId, @RequestBody ShoppingCartItem updatedItem, Principal principal){
+    public ResponseEntity<String> updateQuantity(@PathVariable int productId, @RequestBody ShoppingCartItem updatedItem, Principal principal) {
         String username = principal.getName();
         User user = userDao.getByUserName(username);
         int userId = user.getId();
@@ -90,22 +95,43 @@ public class ShoppingCartController {
         ShoppingCart cart = shoppingCartDao.getByUserId(userId);
         ShoppingCartItem item = cart.get(productId);
 
-        if(item != null){
+        if (item != null) {
             item.setQuantity(updatedItem.getQuantity());
+            return ResponseEntity.ok("Cart item quantity updated.");
+        } else {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Item not found in cart.");
         }
-        return "Item added to cart.";
     }
+
 
 
     // add a DELETE method to clear all products from the current users cart
     // https://localhost:8080/cart
     @DeleteMapping
-    public void clearCart(Principal principal){
+    public ResponseEntity<String> clearCart(Principal principal){
         String username = principal.getName();
         User user = userDao.getByUserName(username);
         int userId = user.getId();
         ShoppingCart cart = shoppingCartDao.getByUserId(userId);
         cart.getItems().clear();
+        return ResponseEntity.ok("Your cart has been emptied. All items removed.");
+    }
+
+    @DeleteMapping("/products/{productId}")
+    public ResponseEntity<String> removeItemFromCart(@PathVariable int productId, Principal principal) {
+        String username = principal.getName();
+        User user = userDao.getByUserName(username);
+        int userId = user.getId();
+
+        ShoppingCart cart = shoppingCartDao.getByUserId(userId);
+        ShoppingCartItem removedItem = cart.get(productId);
+
+        if (removedItem != null) {
+            cart.remove(productId);
+            return ResponseEntity.ok("Item with product ID " + productId + " was removed from your cart.");
+        } else {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Item not found in cart.");
+        }
     }
 
 

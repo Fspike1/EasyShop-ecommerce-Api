@@ -43,4 +43,7 @@ public class ShoppingCart
         return total;
     }
 
+    public ShoppingCartItem remove(int productId) {
+        return items.remove(productId); // This removes the item and returns it
+    }
 }
