@@ -3,7 +3,6 @@
 Welcome to **EasyShop**, a mood-based shopping experience where emotional wellness meets thoughtful products. This web application allows users to log in, take a mood quiz, receive a kit recommendation, and explore the store — all while integrating modern design, secure authentication, and a clean user journey.
 
 ---
-https://github.com/Fspike1/EasyShop-ecommerce-Api/blob/24c1f64aa27da8f5703d41722a8b218cb6140fbe/Screenshot%202025-06-24%20140653.png
 ## 💡 Features
 
 - **User Authentication:** Secure login and token-based access.
@@ -36,7 +35,23 @@ https://github.com/Fspike1/EasyShop-ecommerce-Api/blob/24c1f64aa27da8f5703d41722
 
 ## 📸 Screenshots
 
-> _Add images here if desired (login screen, mood quiz, cart, thank-you screen)_
+### 🛍️ EasyShop Mood Quiz
+![Mood Quiz Demo](easyshopcapstone3/ezgif.com-optimize.gif)
+
+### 🧺 Add to Cart (Postman)
+![Add to Cart](easyshopcapstone3/ezgif.com-optimize (1).gif)
+
+### 🗑️ Delete Item from Cart
+![Delete Item](easyshopcapstone3/ezgif.com-optimize (2).gif)
+
+### 🔐 Login API
+![Login API](easyshopcapstone3/ezgif.com-optimize (3).gif)
+
+### ✅ Order Confirmation
+![Thank You Page](easyshopcapstone3/Screenshot 2025-06-24 114200.png)
+
+### 🛒 Product Catalog
+![Catalog](easyshopcapstone3/Screenshot 2025-06-24 140653.png)
 
 ---
 
