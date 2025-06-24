@@ -30,7 +30,7 @@ Welcome to **EasyShop**, a mood-based shopping experience where emotional wellne
 ### 🏠 Home Screen  
 ![HomeScreen](https://github.com/user-attachments/assets/4e095e55-f9be-44c3-870b-f37c8fd5c0a9)
 
-### 🛍️ Checkout Process  
+### 🛍️ EasyShop Walkthrough  
 ![WalkThrough](https://github.com/user-attachments/assets/e00a4483-35dc-43d9-9e41-ff960f818c02)
 
 ### ✅ Thank You Confirmation  
