@@ -35,23 +35,25 @@ Welcome to **EasyShop**, a mood-based shopping experience where emotional wellne
 
 ## 📸 Screenshots
 
-### 🛍️ EasyShop Mood Quiz
-![Mood Quiz Demo](EasyShopCapstone3/"ezgif.com-optimize.gif")
+## 📸 Project Screenshots & Demos
 
-### 🧺 Add to Cart (Postman)
-![Add to Cart](EasyShopCapstone3/"ezgif.com-optimize (1).gif")
+### 🔐 Login with Token  
+![Login with Token](EasyShopCapstone3/LoginToken.gif)
 
-### 🗑️ Delete Item from Cart
-![Delete Item](EasyShopCapstone3/"ezgif.com-optimize (2).gif")
+### 🏠 Home Screen  
+![Home Screen](EasyShopCapstone3/HomeScreen.png)
 
-### 🔐 Login API
-![Login API](EasyShopCapstone3/"ezgif.com-optimize (3).gif")
+### 🛍️ Checkout Process  
+![EasyShop Checkout](EasyShopCapstone3/EasyShopCheckout.gif)
 
-### ✅ Order Confirmation
-![Thank You Page](EasyShopCapstone3/"Screenshot 2025-06-24 114200.png")
+### ✅ Thank You Confirmation  
+![Thank You Screen](EasyShopCapstone3/ThankYouScreen.png)
 
-### 🛒 Product Catalog
-![Catalog](EasyShopCapstone3/"Screenshot 2025-06-24 140653.png")
+### ➕ Add to Cart (Postman)  
+![Postman Add to Cart](EasyShopCapstone3/PostmanCartUpdate.gif)
+
+### ❌ Delete from Cart (Postman)  
+![Postman Delete](EasyShopCapstone3/PostmanDelete.gif)
 
 ---
 
