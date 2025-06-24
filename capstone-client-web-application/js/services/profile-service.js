@@ -1,47 +1,62 @@
 let profileService;
 
-class ProfileService
-{
-    loadProfile()
-    {
+class ProfileService {
+    loadProfile() {
         const url = `${config.baseUrl}/profile`;
+        const user = userService.getCurrentUser();
 
-        axios.get(url)
-             .then(response => {
-                 templateBuilder.build("profile", response.data, "main")
-             })
-             .catch(error => {
-                 const data = {
-                     error: "Load profile failed."
-                 };
+        if (!user || !user.token) {
+            const data = { error: "You must be logged in to view your profile." };
+            templateBuilder.append("error", data, "errors");
+            return;
+        }
 
-                 templateBuilder.append("error", data, "errors")
-             })
+        axios.get(url, {
+            headers: {
+                Authorization: `Bearer ${user.token}`
+            }
+        })
+        .then(response => {
+            templateBuilder.build("profile", response.data, "main");
+        })
+        .catch(error => {
+            const data = {
+                error: "Load profile under maintenance coming soon."
+            };
+            templateBuilder.append("error", data, "errors");
+        });
     }
 
-    updateProfile(profile)
-    {
-
+    updateProfile(profile) {
         const url = `${config.baseUrl}/profile`;
+        const user = userService.getCurrentUser();
 
-        axios.put(url, profile)
-             .then(() => {
-                 const data = {
-                     message: "The profile has been updated."
-                 };
+        if (!user || !user.token) {
+            const data = { error: "You must be logged in to update your profile." };
+            templateBuilder.append("error", data, "errors");
+            return;
+        }
 
-                 templateBuilder.append("message", data, "errors")
-             })
-             .catch(error => {
-                 const data = {
-                     error: "Save profile failed."
-                 };
-
-                 templateBuilder.append("error", data, "errors")
-             })
+        axios.put(url, profile, {
+            headers: {
+                Authorization: `Bearer ${user.token}`
+            }
+        })
+        .then(() => {
+            const data = {
+                message: "The profile has been updated."
+            };
+            templateBuilder.append("message", data, "errors");
+        })
+        .catch(error => {
+            const data = {
+                error: "Save profile failed."
+            };
+            templateBuilder.append("error", data, "errors");
+        });
     }
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-   profileService = new ProfileService();
+    profileService = new ProfileService();
 });

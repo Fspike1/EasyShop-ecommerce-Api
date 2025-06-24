@@ -8,63 +8,62 @@
     <style>
         body {
             margin: 0;
-            padding: 0;
-            background: linear-gradient(135deg, #fdfbfb, #ebedee);
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Quicksand', sans-serif;
+            background: linear-gradient(135deg, #fdfaf6, #f8f5f2);
+            height: 100vh;
             display: flex;
-            flex-direction: column;
-            align-items: center;
             justify-content: center;
-            min-height: 100vh;
-            text-align: center;
+            align-items: center;
         }
 
-        h1 {
-            font-size: 2.8em;
-            color: #4A148C;
+        .thankyou-container {
+            text-align: center;
+            background: white;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            max-width: 500px;
+            margin: auto;
+        }
+
+        .thankyou-container h1 {
+            font-size: 2.5rem;
+            color: #7b3f00; /* EasyShop dark orange-brown */
             margin-bottom: 10px;
         }
 
-        p {
-            font-size: 1.4em;
+        .thankyou-container p {
+            font-size: 1.2rem;
             color: #555;
+            margin-bottom: 30px;
         }
 
-        .total-amount {
-            font-size: 1.2em;
-            margin-top: 10px;
-            color: #222;
-            font-weight: bold;
-        }
-
-        .glow-btn {
-            margin-top: 30px;
-            padding: 12px 28px;
-            font-size: 1em;
-            border: none;
-            border-radius: 30px;
-            background: #8E24AA;
+        .btn-thankyou {
+            background-color: #88c999; /* Add to Cart green */
             color: white;
-            box-shadow: 0 0 12px #ba68c8, 0 0 24px #ba68c8;
-            transition: 0.3s;
-            cursor: pointer;
+            font-weight: bold;
+            padding: 12px 28px;
+            border: none;
+            border-radius: 8px;
             text-decoration: none;
+            font-size: 1rem;
+            transition: background-color 0.3s ease;
         }
 
-        .glow-btn:hover {
-            box-shadow: 0 0 20px #ab47bc, 0 0 40px #ab47bc;
-            background: #7B1FA2;
+        .btn-thankyou:hover {
+            background-color: #6cb07c;
         }
     </style>
+
 </head>
 <body>
 
-<h1>🧡 Thank You!</h1>
-<p>Your order has been placed successfully.</p>
-<div class="total-amount" id="order-total"></div>
-
-<a class="glow-btn" href="index.html">Back to Home</a>
-
+<div class="thankyou-container">
+    <h1>🧡 Thank You!</h1>
+    <p>Your order has been placed successfully.</p>
+    <div class="total-amount" id="order-total"></div>
+    <a class="btn-thankyou" href="index.html">Back to Home</a>
+</div>
 
 <script>
     // Optional: Display total if passed in query string
@@ -77,4 +76,5 @@
 </script>
 
 </body>
+
 </html>

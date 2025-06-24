@@ -230,7 +230,7 @@ class ShoppingCartService {
 
         axios.post(url)
             .then(response => {
-                alert("Checkout successful!");
+
                 window.location.href = "thankyou.html";
             })
             .catch(error => {
