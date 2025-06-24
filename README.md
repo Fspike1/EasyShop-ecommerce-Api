@@ -36,24 +36,30 @@ Welcome to **EasyShop**, a mood-based shopping experience where emotional wellne
 ## 📸 Screenshots
 
 ## 📸 Project Screenshots & Demos
+![Image](https://github.com/user-attachments/assets/e00a4483-35dc-43d9-9e41-ff960f818c02)
+
+![Image](https://github.com/user-attachments/assets/4e095e55-f9be-44c3-870b-f37c8fd5c0a9)
+
+![Image](https://github.com/user-attachments/assets/81ea9ed5-376e-4811-8577-ffc2c5101ea1)
+
+![Image](https://github.com/user-attachments/assets/7e6fbcd2-85cf-4aa7-b012-7a143d31a97a)
+
+![Image](https://github.com/user-attachments/assets/ddc35ac5-6596-44e8-92c8-d6f7cc714586)
+
+![Image](https://github.com/user-attachments/assets/978474db-94ed-4438-aaf5-7be1a1923e48)
 
 ### 🔐 Login with Token  
-![Login with Token](EasyShopCapstone3/LoginToken.gif)
+
 
 ### 🏠 Home Screen  
-![Home Screen](EasyShopCapstone3/HomeScreen.png)
 
 ### 🛍️ Checkout Process  
-![EasyShop Checkout](EasyShopCapstone3/EasyShopCheckout.gif)
 
 ### ✅ Thank You Confirmation  
-![Thank You Screen](EasyShopCapstone3/ThankYouScreen.png)
 
 ### ➕ Add to Cart (Postman)  
-![Postman Add to Cart](EasyShopCapstone3/PostmanCartUpdate.gif)
 
 ### ❌ Delete from Cart (Postman)  
-![Postman Delete](EasyShopCapstone3/PostmanDelete.gif)
 
 ---
 
