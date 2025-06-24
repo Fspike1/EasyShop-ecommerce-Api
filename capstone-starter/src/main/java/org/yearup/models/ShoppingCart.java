@@ -46,4 +46,7 @@ public class ShoppingCart
     public ShoppingCartItem remove(int productId) {
         return items.remove(productId); // This removes the item and returns it
     }
+    public void clear(){
+        items.clear();
+    }
 }

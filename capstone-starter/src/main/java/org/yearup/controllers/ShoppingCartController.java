@@ -1,6 +1,5 @@
 package org.yearup.controllers;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -20,6 +19,7 @@ import java.security.Principal;
 // only logged in users should have access to these actions
 @RestController
 @RequestMapping("/cart")
+@CrossOrigin(origins = "http://localhost:63342")
 @PreAuthorize("isAuthenticated()")
 public class ShoppingCartController {
     // a shopping cart requires
@@ -60,7 +60,7 @@ public class ShoppingCartController {
     // add a POST method to add a product to the cart - the url should be
     // https://localhost:8080/cart/products/15 (15 is the productId to be added
     @PostMapping("/products/{productId}")
-    public String addToCart(@PathVariable int productId, Principal principal){
+    public ResponseEntity<ShoppingCart> addToCart(@PathVariable int productId, Principal principal){
         String userName = principal.getName();
         User user = userDao.getByUserName(userName);
         int userId = user.getId();
@@ -79,7 +79,7 @@ public class ShoppingCartController {
             item.setQuantity(1);
             cart.add(item);
         }
-        return "Quantity updated";
+        return ResponseEntity.ok(cart);
     }
 
 
@@ -108,13 +108,13 @@ public class ShoppingCartController {
     // add a DELETE method to clear all products from the current users cart
     // https://localhost:8080/cart
     @DeleteMapping
-    public ResponseEntity<String> clearCart(Principal principal){
+    public ResponseEntity<ShoppingCart> clearCart(Principal principal){
         String username = principal.getName();
         User user = userDao.getByUserName(username);
         int userId = user.getId();
         ShoppingCart cart = shoppingCartDao.getByUserId(userId);
         cart.getItems().clear();
-        return ResponseEntity.ok("Your cart has been emptied. All items removed.");
+        return ResponseEntity.ok(cart);
     }
 
     @DeleteMapping("/products/{productId}")
@@ -133,6 +133,26 @@ public class ShoppingCartController {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Item not found in cart.");
         }
     }
+    @PostMapping ("/checkout")
+    public ResponseEntity<String> userCheckout(Principal principal){
+        String userName = principal.getName();
+        User user = userDao.getByUserName(userName);
+        int userId = user.getId();
+
+        ShoppingCart cart = shoppingCartDao.getByUserId(userId);
+        // create item and add to cart
+
+        if (cart.getItems().isEmpty()) {
+            return ResponseEntity.badRequest().body("Your cart is empty.");
+        }
+
+        cart.getItems().clear();
+
+        return ResponseEntity.ok("Checkout complete!");
+    }
+
+
+
 
 
 }

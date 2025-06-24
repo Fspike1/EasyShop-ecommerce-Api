@@ -14,6 +14,10 @@ public class Product
     private boolean isFeatured;
     private String imageUrl;
 
+    public int getId(){
+        return productId;
+    }
+
     public Product()
     {
     }

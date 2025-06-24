@@ -13,4 +13,7 @@ public interface ProductDao
     Product create(Product product);
     void update(int productId, Product product);
     void delete(int productId);
+
+    List<Product> getByCategory(String mentalHealth);
+
 }
