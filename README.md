@@ -31,16 +31,17 @@ Welcome to **EasyShop**, a mood-based shopping experience where emotional wellne
 ![LoginToken](https://github.com/user-attachments/assets/81ea9ed5-376e-4811-8577-ffc2c5101ea1)
 
 
-### ✅ Thank You Confirmation  
-![ThankYouScreen](https://github.com/user-attachments/assets/978474db-94ed-4438-aaf5-7be1a1923e48)
-
-
 ### ➕ Add to Cart (Postman)  
 ![UpdateCart](https://github.com/user-attachments/assets/7e6fbcd2-85cf-4aa7-b012-7a143d31a97a)
 
 
 ### ❌ Delete from Cart (Postman)  
 ![DeleteItem](https://github.com/user-attachments/assets/ddc35ac5-6596-44e8-92c8-d6f7cc714586)
+
+
+
+### ✅ Thank You Confirmation  
+![Image](https://github.com/user-attachments/assets/f8fc3554-e26d-4919-b487-db3362035802)
 
 ---
 
