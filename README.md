@@ -30,9 +30,6 @@ Welcome to **EasyShop**, a mood-based shopping experience where emotional wellne
 ### 🔐 Login with Token  
 ![LoginToken](https://github.com/user-attachments/assets/81ea9ed5-376e-4811-8577-ffc2c5101ea1)
 
-### 🏠 Home Screen  
-![HomeScreen](https://github.com/user-attachments/assets/4e095e55-f9be-44c3-870b-f37c8fd5c0a9)  
-
 
 ### ✅ Thank You Confirmation  
 ![ThankYouScreen](https://github.com/user-attachments/assets/978474db-94ed-4438-aaf5-7be1a1923e48)
