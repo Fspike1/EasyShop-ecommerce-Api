@@ -1,6 +1,7 @@
 # 🛍️ EasyShop – Mood Kit Experience
 
 Welcome to **EasyShop**, a mood-based shopping experience where emotional wellness meets thoughtful products. This web application allows users to log in, take a mood quiz, receive a kit recommendation, and explore the store — all while integrating modern design, secure authentication, and a clean user journey.
+
 ---
 
 ## 💡 Features
@@ -31,13 +32,27 @@ Welcome to **EasyShop**, a mood-based shopping experience where emotional wellne
 
 ---
 
-## 🚧 Known Limitations
+## 🚧 Features Coming Soon
 
 - **Profile Page:** Feature is under maintenance. Message is displayed on attempt.
-- **Static Inventory:** Products are manually added; no admin panel for dynamic updates.
-- **Mood Kits:** Recommended kits are not all in the system but will be soon. 
+- **Mood Kits:** Recommended kits are not all in the system but will be soon.
+- **Admin Profile** Admin having the ability to update and delete products in their profile on the EasyShop website is coming soon.
 
 ---
 
 ## 🗂️ File Structure Highlights
+├── index.html
+├── login.html
+├── quiz.html
+├── thankyou.html
+├── js/
+│   ├── services/
+│   ├── template-builder.js
+│   └── ...
+├── css/
+│   └── site.css
+├── images/
+├── README.md
+└── backend-demo.md  ← (Backend & Postman API guide)
+
 
