@@ -23,7 +23,7 @@ public class MoodKitController {
 
     @GetMapping
     public List<Product> getMoodKits() {
-        return productDao.getByCategory("Mental Health"); // or whatever category you name it
+        return productDao.getByCategory("Mental Health"); 
     }
 }
 
