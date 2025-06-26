@@ -22,7 +22,7 @@ Welcome to **EasyShop**, a mood-based shopping experience where emotional wellne
 - **Authentication:** JWT (JSON Web Token)
 
 
-## User Journey
+## 🗺️ User Journey
 ![Image](https://github.com/user-attachments/assets/113317b0-3e66-4cce-91b1-29d796fe64a0)
 
 ---
