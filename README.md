@@ -44,19 +44,4 @@ Welcome to **EasyShop**, a mood-based shopping experience where emotional wellne
 
 ---
 
-## 🗂️ File Structure Highlights
-├── index.html
-├── login.html
-├── quiz.html
-├── thankyou.html
-├── js/
-│   ├── services/
-│   ├── template-builder.js
-│   └── ...
-├── css/
-│   └── site.css
-├── images/
-├── README.md
-└── backend-demo.md  ← (Backend & Postman API guide)
-
 
