@@ -42,11 +42,11 @@ Welcome to **EasyShop**, a mood-based shopping experience where emotional wellne
 
 ## 🌟 Final Notes
 
-This is my final capstone project for the Year Up program — a full-circle moment in my journey as a developer.
+This is our final capstone project for the Java Program — a full-circle moment in my journey to becoming a developer.
 
-EasyShop represents more than just a web app; it’s a stepping stone toward building tech that heals, connects, and empowers. Thank you to everyone who's supported me along the way — mentors, classmates, and every bug that tried to break my spirit (and nearly succeeded 😅).
+EasyShop represents more than just a web app. For me, it’s a stepping stone toward building tech that heals, connects, and empowers. Thank you to everyone who's supported me along the way — Maaike, my mentors, tutors, classmates, and every bug that tried to break my spirit (and nearly succeeded 😅).
 
-Here’s to growth, grit, and glowing up one mood kit at a time. ✨
+Here’s to growth, grit, and pushing ourselves out of our comfort zones every day. ✨
 
 **– Faith Spikes** 🧡  
 Developer. Dreamer. Mood Room Architect.
