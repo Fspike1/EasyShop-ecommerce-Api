@@ -27,10 +27,6 @@ Welcome to **EasyShop**, a mood-based shopping experience where emotional wellne
 
 ---
 
-## 🧠 How It Works
-![WalkThrough](https://github.com/user-attachments/assets/e00a4483-35dc-43d9-9e41-ff960f818c02)
-
-
 ### ✅ Thank You Confirmation  
 ![Image](https://github.com/user-attachments/assets/f8fc3554-e26d-4919-b487-db3362035802)
 
