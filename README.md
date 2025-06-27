@@ -39,5 +39,17 @@ Welcome to **EasyShop**, a mood-based shopping experience where emotional wellne
 - **Admin Profile** Admin having the ability to update and delete products in their profile on the EasyShop website is coming soon.
 
 ---
+---
+
+## 🌟 Final Notes
+
+This is my final capstone project for the Year Up program — a full-circle moment in my journey as a developer.
+
+EasyShop represents more than just a web app; it’s a stepping stone toward building tech that heals, connects, and empowers. Thank you to everyone who's supported me along the way — mentors, classmates, and every bug that tried to break my spirit (and nearly succeeded 😅).
+
+Here’s to growth, grit, and glowing up one mood kit at a time. ✨
+
+**– Faith Spikes** 🧡  
+Developer. Dreamer. Mood Room Architect.
 
 
