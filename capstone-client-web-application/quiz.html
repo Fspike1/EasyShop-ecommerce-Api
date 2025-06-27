@@ -4,125 +4,112 @@
     <meta charset="UTF-8">
     <title>Welcome to EasyShop</title>
     <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/main.css">
-    <script src="js/lib/axios.min.js"></script>
-    <script src="js/services/user-service.js"></script>
-    <script src="js/services/shoppingcart-service.js"></script>
-    <script src="js/config.js"></script>
-    <script src="js/mood-quiz.js" defer></script>
     <style>
         body {
-            font-family: 'Quicksand', sans-serif;
-            background: linear-gradient(145deg, #f3f4f6, #e0f7f1);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
+          font-family: 'Quicksand', sans-serif;
+          background: #e0f7f1;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          height: 100vh;
         }
 
         main {
-            background: white;
-            padding: 40px;
-            border-radius: 15px;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-            max-width: 800px;
-            width: 100%;
-            display: flex;
-            justify-content: space-between;
-            gap: 40px;
-        }
-
-        .left-panel {
-            width: 45%;
-        }
-
-        .right-panel {
-            width: 45%;
-        }
-
-        h2 {
-            color: #333;
-            margin-bottom: 10px;
+          background: white;
+          padding: 40px;
+          border-radius: 15px;
+          box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+          max-width: 800px;
+          width: 100%;
+          display: flex;
+          justify-content: space-between;
+          gap: 40px;
         }
 
         .mood-btn {
-            display: block;
-            width: 100%;
-            background-color: #fff;
-            border: 2px solid #ccc;
-            border-radius: 8px;
-            padding: 12px;
-            margin: 10px 0;
-            font-weight: 600;
-            font-size: 1rem;
-            transition: all 0.3s;
-            cursor: pointer;
+          display: block;
+          width: 100%;
+          background-color: #fff;
+          border: 2px solid #ccc;
+          border-radius: 8px;
+          padding: 12px;
+          margin: 10px 0;
+          font-weight: 600;
+          font-size: 1rem;
+          transition: all 0.3s;
+          cursor: pointer;
         }
 
         .mood-btn:hover {
-            background-color: #d0f2e3;
-            transform: scale(1.02);
+          background-color: #d0f2e3;
+          transform: scale(1.02);
         }
 
         #kit-result {
-            display: none;
-            margin-top: 20px;
-            padding: 15px;
-            background: #fefefe;
-            border-radius: 10px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+          display: none;
+          margin-top: 20px;
+          padding: 15px;
+          background: #fefefe;
+          border-radius: 10px;
+          box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
         }
 
         #kit-message {
-            font-size: 1.1rem;
-            margin-bottom: 15px;
-        }
-
-        #add-to-cart-btn, #skip-btn {
-            margin: 8px 5px;
-            padding: 10px 20px;
-            font-weight: bold;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-
-        #add-to-cart-btn {
-            background-color: #5cb85c;
-            color: white;
-        }
-
-        #skip-btn {
-            background-color: #ccc;
-            color: #333;
+          font-size: 1.1rem;
+          margin-bottom: 15px;
         }
     </style>
 </head>
-
 <body>
+
 <main>
     <div class="left-panel">
         <h2>Hey there, welcome to EasyShop 🛍️</h2>
-        <p style="margin-bottom: 20px; color: #444;">How are you feeling today? I might have something you’ll like.</p>
-        <p style="font-size: 0.9rem; font-style: italic; color: #777;">Take a moment — no rush.</p>
+        <p>How are you feeling today?</p>
 
-        <section id="kit-result">
+        <div id="kit-result">
             <p id="kit-message"></p>
-            <button id="add-to-cart-btn">Yes, add to cart</button>
-            <button id="skip-btn">Take me home</button>
-        </section>
+            <button id="add-to-cart-btn" style="display: none;">Yes, add to cart</button>
+            <button id="skip-btn" style="display: none;">Skip for now</button>
+        </div>
     </div>
 
     <div class="right-panel">
         <form id="mood-form">
             <button type="button" class="mood-btn" data-mood="overwhelmed">🌧️ Overwhelmed</button>
             <button type="button" class="mood-btn" data-mood="hopeful">🌞 Hopeful</button>
-            <button type="button" class="mood-btn" data-mood="heavy">🪨 Heavy</button>
-            <button type="button" class="mood-btn" data-mood="creative">🎨 Creative</button>
-            <button type="button" class="mood-btn" data-mood="joyful">💃 Joyful</button>
-            <button type="button" class="mood-btn" data-mood="disconnected">🌫️ Disconnected</button>
         </form>
     </div>
 </main>
+
+<script>
+    console.log("✅ Script is running!");
+
+    document.addEventListener("DOMContentLoaded", () => {
+      const moodButtons = document.querySelectorAll(".mood-btn");
+      const kitResult = document.getElementById("kit-result");
+      const kitMessage = document.getElementById("kit-message");
+      const addToCartBtn = document.getElementById("add-to-cart-btn");
+      const skipBtn = document.getElementById("skip-btn");
+
+      const moodKitMap = {
+        overwhelmed: { name: "Reset Box", id: 92 },
+        hopeful: { name: "Calm Kit", id: 91 }
+      };
+
+      moodButtons.forEach(button => {
+        button.addEventListener("click", () => {
+          const mood = button.dataset.mood;
+          const kit = moodKitMap[mood];
+
+          kitResult.style.display = "block";
+          kitMessage.textContent = `We recommend the ${kit.name} for how you're feeling.`;
+          addToCartBtn.style.display = "inline-block";
+          skipBtn.style.display = "inline-block";
+        });
+      });
+    });
+</script>
+
 </body>
 </html>

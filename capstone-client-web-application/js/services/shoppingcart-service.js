@@ -223,15 +223,42 @@ class ShoppingCartService {
                 templateBuilder.append("error", data, "errors");
             });
     }
-    checkoutCart()
-    {
-        const url = `${config.baseUrl}/cart/checkout`;
-        console.log("Sending checkout request to: ", url);
+    checkoutCart() {
+        const getCartUrl = `${config.baseUrl}/cart`;
+        const checkoutUrl = `${config.baseUrl}/cart/checkout`;
 
-        axios.post(url)
-            .then(response => {
+        const user = userService.getCurrentUser();
 
-                window.location.href = "thankyou.html";
+        if (!user || !user.token) {
+            const data = { error: "You must be logged in to checkout." };
+            templateBuilder.append("error", data, "errors");
+            return;
+        }
+
+        axios.get(getCartUrl, {
+            headers: {
+                Authorization: `Bearer ${user.token}`
+            }
+        })
+        .then(cartResponse => {
+            const cart = cartResponse.data;
+
+            // 👇 Check if cart has any items
+            if (!cart.items || Object.keys(cart.items).length === 0) {
+                const data = { error: "Cannot checkout an empty cart." };
+                templateBuilder.append("error", data, "errors");
+                return;
+            }
+
+            const total = cart.total || 0;
+
+            axios.post(checkoutUrl, {}, {
+                headers: {
+                    Authorization: `Bearer ${user.token}`
+                }
+            })
+            .then(() => {
+                window.location.href = `thankyou.html?total=${total.toFixed(2)}`;
             })
             .catch(error => {
                 const data = {
@@ -239,7 +266,16 @@ class ShoppingCartService {
                 };
                 templateBuilder.append("error", data, "errors");
             });
+
+        })
+        .catch(error => {
+            const data = {
+                error: "Could not retrieve cart total."
+            };
+            templateBuilder.append("error", data, "errors");
+        });
     }
+
 
 
 }

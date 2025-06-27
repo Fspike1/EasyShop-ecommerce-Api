@@ -121,6 +121,7 @@ class UserService {
                 axios.defaults.headers.common = {'Authorization': `Bearer ${this.currentUser.token}`}
                 productService.enableButtons();
                 cartService.loadCart();
+                document.getElementById("mood-quiz").style.display = "block";
             })
             .catch(error => {
                 const data = {

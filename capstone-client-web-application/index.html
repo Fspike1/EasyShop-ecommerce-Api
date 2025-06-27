@@ -2,14 +2,14 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>EasyShop Home</title>
 
-    <!--  CSS  -->
+    <!-- CSS -->
     <link rel="stylesheet" href="css/lib/bootstrap.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="css/main.css">
 
-    <!--  JS  -->
+    <!-- JS -->
     <script src="js/lib/axios.min.js"></script>
     <script src="js/lib/mustache.js"></script>
     <script src="js/lib/bootstrap.min.js"></script>
@@ -24,30 +24,155 @@
     <script src="js/services/shoppingcart-service.js"></script>
 
     <script src="js/filter.js"></script>
-
-
     <script src="js/application.js"></script>
+
+    <style>
+        #kit-result {
+            display: none;
+            margin-top: 20px;
+            padding: 15px;
+            background: #fefefe;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        #kit-message {
+            font-size: 1.1rem;
+            margin-bottom: 15px;
+        }
+
+        #add-to-cart-btn, #skip-btn {
+            margin: 8px 5px;
+            padding: 10px 20px;
+            font-weight: bold;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        #add-to-cart-btn {
+            background-color: #5cb85c;
+            color: white;
+        }
+
+        #skip-btn {
+            background-color: #ccc;
+            color: #333;
+        }
+
+        #mood-quiz {
+            margin: 40px auto;
+            max-width: 900px;
+        }
+    </style>
 </head>
+
 <body>
+<header id="header-user"></header>
+<section id="login"></section>
 
-    <header id="header-user"></header>
+<!-- 💡 Mood Quiz -->
+<section id="mood-quiz">
+    <div class="d-flex justify-content-between align-items-start gap-5 p-4 shadow rounded bg-white">
+        <div class="left-panel w-50">
+            <h2>How are you feeling today?</h2>
+            <p style="font-size: 0.9rem; font-style: italic; color: #777;">Take a moment — no rush.</p>
 
-    <section id="errors">
-    </section>
+            <div id="kit-result">
+                <p id="kit-message"></p>
+                <button id="add-to-cart-btn" style="display: none;">Yes, add to cart</button>
+                <button id="skip-btn" style="display: none;">Skip for now</button>
+            </div>
+        </div>
 
-    <section id="login"></section>
+        <div class="right-panel w-50">
+            <form id="mood-form">
+                <button type="button" class="btn btn-outline-dark w-100 my-1 mood-btn" data-mood="overwhelmed">🌧️ Overwhelmed</button>
+                <button type="button" class="btn btn-outline-dark w-100 my-1 mood-btn" data-mood="hopeful">🌞 Hopeful</button>
+                <button type="button" class="btn btn-outline-dark w-100 my-1 mood-btn" data-mood="heavy">🪨 Heavy</button>
+                <button type="button" class="btn btn-outline-dark w-100 my-1 mood-btn" data-mood="creative">🎨 Creative</button>
+                <button type="button" class="btn btn-outline-dark w-100 my-1 mood-btn" data-mood="joyful">💃 Joyful</button>
+                <button type="button" class="btn btn-outline-dark w-100 my-1 mood-btn" data-mood="disconnected">🌫️ Disconnected</button>
+            </form>
+        </div>
+    </div>
+</section>
 
-    <main id="main" class="thankyou-container">
-        <h1>🧡 Thank You!</h1>
-        <p>Your order has been placed successfully.</p>
-        <a class="btn-thankyou" href="index.html">Back to Home</a>
-    </main>
+<!-- 🛒 Your Main Store Content -->
+<main id="main" class="container">
+    <!-- Products, filters, cart view, etc. -->
+</main>
+
+<footer></footer>
+
+<!-- ✅ Quiz Logic -->
+<script>
+    window.addEventListener("DOMContentLoaded", () => {
+        const moodButtons = document.querySelectorAll(".mood-btn");
+        const kitResult = document.getElementById("kit-result");
+        const kitMessage = document.getElementById("kit-message");
+        const addToCartBtn = document.getElementById("add-to-cart-btn");
+        const skipBtn = document.getElementById("skip-btn");
+        const moodQuizSection = document.getElementById("mood-quiz");
+
+        const moodKitMap = {
+            overwhelmed: { name: "Reset Box", id: 92 },
+            hopeful: { name: "Calm Kit", id: 91 },
+            heavy: { name: "Reset Box", id: 92 },
+            creative: { name: "Reset Box", id: 92 },
+            joyful: { name: "Calm Kit", id: 91 },
+            disconnected: { name: "Calm Kit", id: 91 }
+        };
+
+        let selectedKit = null;
+
+        moodButtons.forEach(button => {
+            button.addEventListener("click", () => {
+                const mood = button.dataset.mood;
+                const kit = moodKitMap[mood];
+
+                kitResult.style.display = "block";
+                skipBtn.style.display = "inline-block";
+
+                if (kit) {
+                    kitMessage.textContent = `We recommend the ${kit.name} for how you're feeling. Would you like to add it to your cart?`;
+                    addToCartBtn.style.display = "inline-block";
+                    selectedKit = kit;
+                } else {
+                    kitMessage.textContent = "We're creating a kit just for you – new mood kits coming soon!";
+                    addToCartBtn.style.display = "none";
+                    selectedKit = null;
+                }
+            });
+        });
+
+        addToCartBtn.addEventListener("click", () => {
+    if (selectedKit) {
+        const url = `${config.baseUrl}/cart/products/${selectedKit.id}`;
+        axios.post(url, {}, {
+            headers: userService.getHeaders()
+        })
+        .then(() => {
+            alert(`${selectedKit.name} was added to your cart!`);
+            cartService.loadCart(); // Update the cart display
+            moodQuizSection.remove(); //  Hide quiz after success
+        })
+        .catch(error => {
+            alert("There was a problem adding your kit to the cart.");
+            console.error(error);
+        });
+    }
+});
+
+skipBtn.addEventListener("click", () => {
+    moodQuizSection.remove(); // 🔥 Hide quiz if skipped
+});
 
 
-
-
-    <footer></footer>
-
-
+        skipBtn.addEventListener("click", () => {
+            moodQuizSection.remove(); // 🔥 Quiz disappears
+        });
+    });
+</script>
 </body>
 </html>

@@ -48,12 +48,25 @@
             text-decoration: none;
             font-size: 1rem;
             transition: background-color 0.3s ease;
+            margin-top: 20px;
         }
 
         .btn-thankyou:hover {
             background-color: #6cb07c;
         }
+        #order-total {
+    margin-bottom: 20px;
+    min-height: 1.5em;
+    font-weight: bold;
+    color: #7b3f00;
+}
+
     </style>
+
+    <!-- ✅ Add required script libraries here -->
+    <script src="js/config.js"></script>
+    <script src="js/services/user-service.js"></script>
+    <script src="js/lib/axios.min.js"></script>
 
 </head>
 <body>
@@ -65,16 +78,20 @@
     <a class="btn-thankyou" href="index.html">Back to Home</a>
 </div>
 
+<!-- ✅ Fetch order total once everything is loaded -->
 <script>
-    // Optional: Display total if passed in query string
-    const urlParams = new URLSearchParams(window.location.search);
-    const total = urlParams.get('total');
+    document.addEventListener("DOMContentLoaded", () => {
+        const urlParams = new URLSearchParams(window.location.search);
+        const total = urlParams.get('total');
 
-    if (total) {
-        document.getElementById('order-total').innerText = `Order Total: $${parseFloat(total).toFixed(2)}`;
-    }
+        if (total) {
+            document.getElementById("order-total").innerText = `Order Total: $${parseFloat(total).toFixed(2)}`;
+        } else {
+            document.getElementById("order-total").innerText = "No order total found.";
+        }
+    });
 </script>
 
-</body>
 
+</body>
 </html>
