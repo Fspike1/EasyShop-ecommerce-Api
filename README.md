@@ -1,6 +1,6 @@
 # 🛍️ EasyShop – Mood Kit Experience
 
-Welcome to **EasyShop**, a mood-based shopping experience where emotional wellness meets thoughtful products. This web application allows users to log in, take a mood quiz, receive a kit recommendation, and explore the store — all while integrating modern design, secure authentication, and a clean user journey.
+Welcome to **EasyShop**, a mood-based shopping experience where we incorportate emotional wellness into everything we do. This web application allows users to log in, take a mood quiz, receive a kit recommendation, and explore the store — all while integrating modern design, secure authentication, and a clean user journey.
 
 ---
 
